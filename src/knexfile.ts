@@ -1,3 +1,10 @@
+import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({
+  path: path.resolve(__dirname, `../config/${process.env.NODE_ENV}.env`),
+});
+
 const dbConfig: { [index: string]: any } = {
   development: {
     client: 'pg',
@@ -31,4 +38,4 @@ const dbConfig: { [index: string]: any } = {
   },
 };
 
-export default dbConfig;
+module.exports = dbConfig;
