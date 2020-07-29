@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 dotenv.config({
-  path: path.resolve(__dirname, '../config/${process.env.ENVIRONMENT}.env'),
+  path: path.resolve(__dirname, `../config/${process.env.NODE_ENV}.env`),
 });
 
 const { PORT } = process.env;
