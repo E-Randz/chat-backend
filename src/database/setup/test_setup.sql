@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS chat_test;
+CREATE DATABASE chat_test;

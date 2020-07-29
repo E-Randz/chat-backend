@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "npm run prettier-format && npm run lint && npm test"
+    "pre-commit": "npm run prettier-format && npm run lint && tsc --noEmit && npm test"
   }
 }

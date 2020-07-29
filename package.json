@@ -6,9 +6,15 @@
   "scripts": {
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint . --ext .ts",
-    "test": "mocha -r ts-node/register 'spec/**/*.spec.ts'",
-    "start:dev": "nodemon",
-    "build": "rimraf ./build && tsc"
+    "test": "mocha -r ts-node/register 'src/spec/**/*.spec.ts'",
+    "build": "rimraf ./build && tsc",
+    "start:dev": "cross-env NODE_ENV=dev nodemon",
+    "start:test": "cross-env NODE_ENV=test nodemon",
+    "start:prod": "npm run build && cross-env NODE_ENV=prod node build/server.js",
+    "make:migrate": "knex migrate:make",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:db": "npm run migrate:rollback && npm run migrate:latest && knex seed:run"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +44,10 @@
   "dependencies": {
     "@types/mocha": "^8.0.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.2",
+    "pg": "^8.3.0"
   }
 }
