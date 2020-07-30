@@ -1,11 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import apiRouter from './controllers/api';
+
+import sendEndpoints from './controllers/api';
+import authRouter from './routes/auth';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/', apiRouter);
+app.get('/', sendEndpoints);
+app.use('/auth', authRouter);
 
 export default app;
