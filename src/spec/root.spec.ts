@@ -4,7 +4,7 @@ import app from '../app';
 
 const request = supertest(app);
 
-describe('API', () => {
+describe('Root', () => {
   describe('/', () => {
     it('GET status 200 responds with JSON describing all available endpoints in API', () => {
       return request
