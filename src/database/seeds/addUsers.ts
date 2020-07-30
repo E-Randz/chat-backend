@@ -6,7 +6,6 @@ export async function seed(knex: Knex): Promise<void> {
   await knex('users').del();
 
   const userSchema = {
-    id: '{{random.number}}',
     email: '{{internet.email}}',
     first_name: '{{name.firstName}}',
     last_name: '{{name.lastName}}',
@@ -15,9 +14,5 @@ export async function seed(knex: Knex): Promise<void> {
   const data = generator(userSchema, 1000);
 
   // Inserts seed entries
-  await knex('table_name').insert([
-    { id: 1, colName: 'rowValue1' },
-    { id: 2, colName: 'rowValue2' },
-    { id: 3, colName: 'rowValue3' },
-  ]);
+  await knex('users').insert(data);
 }

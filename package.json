@@ -15,7 +15,8 @@
     "make:migrate:dev": "knex migrate:make --knexfile src/knexfile.ts -x ts --env development",
     "migrate:latest:dev": "NODE_ENV=dev knex migrate:latest --knexfile src/knexfile.ts ts --env development",
     "migrate:rollback:dev": "NODE_ENV=dev knex migrate:rollback --knexfile src/knexfile.ts ts --env development",
-    "seed:make:dev": "NODE_ENV=dev knex seed:make --knexfile src/knexfile.ts -x ts --env development"
+    "seed:make:dev": "NODE_ENV=dev knex seed:make --knexfile src/knexfile.ts -x ts --env development",
+    "seed:run:dev": "NODE_ENV=dev knex seed:run --knexfile src/knexfile.ts ts --env development"
   },
   "keywords": [],
   "author": "",

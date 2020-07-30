@@ -4,7 +4,6 @@ import { generator } from '../database/utils/fakerGenerator';
 describe('UTILS', () => {
   describe('fakerGenerator', () => {
     const userSchema = {
-      id: '{{random.number}}',
       email: '{{internet.email}}',
       first_name: '{{name.firstName}}',
       last_name: '{{name.lastName}}',
@@ -17,8 +16,8 @@ describe('UTILS', () => {
       assert.lengthOf(userData, 1, "user data's value has a length of 1");
       assert.hasAllKeys(
         userData[0],
-        ['id', 'email', 'first_name', 'last_name'],
-        "first user has all keys 'id', 'email', first_name, 'last_name'",
+        ['email', 'first_name', 'last_name'],
+        "first user has all keys 'email', first_name, 'last_name'",
       );
     });
 
@@ -38,8 +37,8 @@ describe('UTILS', () => {
       );
       assert.hasAllKeys(
         userData[0],
-        ['id', 'email', 'first_name', 'last_name'],
-        "first user has all keys 'id', 'email', first_name, 'last_name'",
+        ['email', 'first_name', 'last_name'],
+        "first user has all keys 'email', first_name, 'last_name'",
       );
     });
 
@@ -54,8 +53,8 @@ describe('UTILS', () => {
       );
       assert.hasAllKeys(
         userData[0],
-        ['id', 'email', 'first_name', 'last_name'],
-        "first user has all keys 'id', 'email', first_name, 'last_name'",
+        ['email', 'first_name', 'last_name'],
+        "first user has all keys 'email', first_name, 'last_name'",
       );
     });
   });
