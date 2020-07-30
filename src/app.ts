@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Errback, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -16,5 +16,27 @@ app.use(cors());
 app.use(express.json());
 app.get('/', sendEndpoints);
 app.use('/auth', authRouter);
+
+interface ErrorWithStatus extends Error {
+  status?: number;
+}
+
+// error handling
+app.use((req, res, next) => {
+  // if no other route matches
+  const error: ErrorWithStatus = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+app.use((err: ErrorWithStatus, req: Request, res: Response) => {
+  res.status(err.status || 500);
+
+  res.json({
+    error: {
+      message: err.message,
+    },
+  });
+});
 
 export default app;
