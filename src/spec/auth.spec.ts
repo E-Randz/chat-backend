@@ -3,10 +3,16 @@ import app from '../app';
 
 const request = supertest(app);
 
-// describe('AUTH', () => {
-//   describe('/auth', () => {
-//     it('GET status 404 error', () => {
-//       return request.get('/auth').expect(404);
-//     });
-//   });
-// });
+describe('AUTH', () => {
+  const user = {
+    first_name: 'Timmy',
+    last_name: 'Timmison',
+    email: 'timmy@timmy.com',
+    password: 'timmy123',
+  };
+  describe('/auth/register', () => {
+    it('GET status 404 error', () => {
+      return request.post('/auth/register').send(user).expect(404);
+    });
+  });
+});

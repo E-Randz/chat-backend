@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { generator } from '../database/utils/fakerGenerator';
+import { generator } from '../db/utils/fakerGenerator';
 
 describe('UTILS', () => {
   describe('fakerGenerator', () => {

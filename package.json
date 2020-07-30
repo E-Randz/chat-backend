@@ -12,11 +12,15 @@
     "start:test": "cross-env NODE_ENV=test nodemon",
     "start:prod": "npm run build && cross-env NODE_ENV=prod node build/server.js",
     "knex": "node -r esm node_modules/.bin/knex",
-    "make:migrate:dev": "knex migrate:make --knexfile src/knexfile.ts -x ts --env development",
+    "make:migrate": "knex migrate:make --knexfile src/knexfile.ts -x ts --env development",
     "migrate:latest:dev": "NODE_ENV=dev knex migrate:latest --knexfile src/knexfile.ts ts --env development",
     "migrate:rollback:dev": "NODE_ENV=dev knex migrate:rollback --knexfile src/knexfile.ts ts --env development",
     "seed:make:dev": "NODE_ENV=dev knex seed:make --knexfile src/knexfile.ts -x ts --env development",
-    "seed:run:dev": "NODE_ENV=dev knex seed:run --knexfile src/knexfile.ts ts --env development"
+    "seed:run:dev": "NODE_ENV=dev knex seed:run --knexfile src/knexfile.ts ts --env development",
+    "migrate:latest:test": "NODE_ENV=test knex migrate:latest --knexfile src/knexfile.ts ts --env test",
+    "migrate:rollback:test": "NODE_ENV=test knex migrate:rollback --knexfile src/knexfile.ts ts --env test",
+    "seed:make:test": "NODE_ENV=test knex seed:make --knexfile src/knexfile.ts -x ts --env test",
+    "seed:run:test": "NODE_ENV=test knex seed:run --knexfile src/knexfile.ts ts --env test"
   },
   "keywords": [],
   "author": "",
