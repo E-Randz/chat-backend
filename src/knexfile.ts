@@ -9,30 +9,30 @@ const dbConfig: { [index: string]: any } = {
   development: {
     client: 'pg',
     migrations: {
-      directory: './database/migrations',
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './database/seeds',
+      directory: './db/seeds',
     },
     connection: process.env.DB_URL,
   },
   test: {
     client: 'pg',
     migrations: {
-      directory: './database/migrations',
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './database/seeds',
+      directory: './db/seeds',
     },
     connection: process.env.DB_URL,
   },
   production: {
     client: 'pg',
     migrations: {
-      directory: './database/migrations',
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './database/seeds',
+      directory: './db/seeds',
     },
     connection: `${process.env.DB_URL}?ssl=true`,
   },
