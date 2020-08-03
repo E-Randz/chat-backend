@@ -6,4 +6,4 @@ const env = process.env.NODE_ENV;
 
 // USERS
 const rawUserData = fs.readFileSync(`./${env}-data/users.json`);
-export const userData = JSON.parse(rawUserData.toString());
+export const users = JSON.parse(rawUserData.toString());
