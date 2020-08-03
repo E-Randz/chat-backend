@@ -5,21 +5,19 @@ export async function up(knex: Knex): Promise<void> {
     // id
     table.increments();
     table.string('display_name').notNullable();
-    table.integer('user_id').notNullable();
-    table.integer('team_id').notNullable();
-    table.timestamps(true, true);
-
     table
-      .foreign('user_id')
+      .integer('user_id')
+      .notNullable()
       .references('id')
       .inTable('users')
       .onDelete('CASCADE');
-
     table
-      .foreign('team_id')
+      .integer('team_id')
+      .notNullable()
       .references('id')
       .inTable('teams')
       .onDelete('CASCADE');
+    table.timestamps(true, true);
 
     // no duplicate display names allowed in a single team
     table.unique(['team_id', 'display_name']);
