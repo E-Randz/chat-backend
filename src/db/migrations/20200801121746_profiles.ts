@@ -9,8 +9,11 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('team_id').notNullable();
     table.timestamps(true, true);
 
-    table.foreign('user_id').references('id').inTable('users');
-    // ** extra verification needed to ensure that the user being deleted
+    table
+      .foreign('user_id')
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE');
 
     table
       .foreign('team_id')

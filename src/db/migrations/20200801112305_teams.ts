@@ -7,7 +7,6 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('created_by').notNullable();
     table.timestamps(true, true);
 
-    // ** no cascade if deleting a user, user will first have to either transfer ownership of team or delete team
     table
       .foreign('created_by')
       .references('id')
