@@ -13,8 +13,12 @@ export async function up(knex: Knex): Promise<void> {
       .references('id')
       .inTable('teams')
       .onDelete('CASCADE');
-    // ** no cascade if deleting a user, user will first have to either transfer ownership of channel or delete channel
-    table.foreign('created_by').references('id').inTable('profiles');
+
+    table
+      .foreign('created_by')
+      .references('id')
+      .inTable('profiles')
+      .onDelete('CASCADE');
   });
 }
 
