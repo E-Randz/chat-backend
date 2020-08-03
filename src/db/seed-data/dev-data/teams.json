@@ -1,12 +1,7 @@
 [
   { "name": "Tagfeed", "created_by": 1 },
-  { "name": "Livetube", "created_by": 2 },
+  { "name": "Livetube", "created_by": 1 },
   { "name": "Yodel", "created_by": 3 },
   { "name": "Yodo", "created_by": 4 },
-  { "name": "Oyondu", "created_by": 5 },
-  { "name": "Yodoo", "created_by": 6 },
-  { "name": "Youspan", "created_by": 7 },
-  { "name": "Skippad", "created_by": 8 },
-  { "name": "Fanoodle", "created_by": 9 },
-  { "name": "Npath", "created_by": 10 }
+  { "name": "Oyondu", "created_by": 5 }
 ]
