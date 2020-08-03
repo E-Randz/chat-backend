@@ -9,8 +9,16 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('user_id').notNullable();
     table.timestamps(true, true);
 
-    table.foreign('user_id').references('id').inTable('users');
-    table.foreign('team_id').references('id').inTable('teams');
+    table
+      .foreign('user_id')
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE');
+    table
+      .foreign('team_id')
+      .references('id')
+      .inTable('teams')
+      .onDelete('CASCADE');
     // no duplicate display names allowed in a single team
     table.unique(['team_id', 'display_name']);
     // a user can only create one profile per team

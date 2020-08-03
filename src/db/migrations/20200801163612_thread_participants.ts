@@ -6,8 +6,16 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('thread_id').notNullable();
     table.integer('profile_id').notNullable();
 
-    table.foreign('thread_id').references('id').inTable('threads');
-    table.foreign('profile_id').references('id').inTable('profiles');
+    table
+      .foreign('thread_id')
+      .references('id')
+      .inTable('threads')
+      .onDelete('CASCADE');
+    table
+      .foreign('profile_id')
+      .references('id')
+      .inTable('profiles')
+      .onDelete('CASCADE');
     // no duplicate participants in threads
     table.unique(['thread_id', 'profile_id']);
   });

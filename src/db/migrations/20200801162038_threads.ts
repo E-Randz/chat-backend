@@ -8,7 +8,11 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('channel_id').notNullable();
     table.timestamps(true, true);
 
-    table.foreign('channel_id').references('id').inTable('channels');
+    table
+      .foreign('channel_id')
+      .references('id')
+      .inTable('channels')
+      .onDelete('CASCADE');
   });
 }
 

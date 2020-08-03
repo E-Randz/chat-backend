@@ -10,8 +10,16 @@ export async function up(knex: Knex): Promise<void> {
     table.json('reactions');
     table.timestamps(true, true);
 
-    table.foreign('thread_id').references('id').inTable('threads');
-    table.foreign('profile_id').references('id').inTable('profiles');
+    table
+      .foreign('thread_id')
+      .references('id')
+      .inTable('threads')
+      .onDelete('CASCADE');
+    table
+      .foreign('profile_id')
+      .references('id')
+      .inTable('profiles')
+      .onDelete('CASCADE');
   });
 }
 
