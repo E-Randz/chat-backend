@@ -5,10 +5,13 @@ export async function up(knex: Knex): Promise<void> {
     // id
     table.increments();
     table.string('name');
-    table.integer('channel_id').notNullable();
+    table
+      .integer('channel_id')
+      .notNullable()
+      .references('id')
+      .inTable('channels')
+      .onDelete('CASCADE');
     table.timestamps(true, true);
-
-    table.foreign('channel_id').references('id').inTable('channels');
   });
 }
 
