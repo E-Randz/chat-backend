@@ -23,3 +23,7 @@ const rawChannelData = fs.readFileSync(
   __dirname + `/${env}-data/channels.json`,
 );
 export const channels = JSON.parse(rawChannelData.toString());
+
+// THREADS
+const rawThreadData = fs.readFileSync(__dirname + `/${env}-data/threads.json`);
+export const threads = JSON.parse(rawThreadData.toString());
