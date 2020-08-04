@@ -11,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {
       .inTable('teams')
       .onDelete('CASCADE');
     table
-      .integer('created_by')
+      .integer('profile_id')
       .notNullable()
       .references('id')
       .inTable('profiles')
