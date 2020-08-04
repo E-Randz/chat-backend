@@ -17,3 +17,9 @@ const rawProfileData = fs.readFileSync(
   __dirname + `/${env}-data/profiles.json`,
 );
 export const profiles = JSON.parse(rawProfileData.toString());
+
+// CHANNELS
+const rawChannelData = fs.readFileSync(
+  __dirname + `/${env}-data/channels.json`,
+);
+export const channels = JSON.parse(rawChannelData.toString());

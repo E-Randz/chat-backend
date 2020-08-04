@@ -1,0 +1,11 @@
+[
+  { "name": "Human Resources", "team_id": 1, "profile_id": 1 },
+  { "name": "IT", "team_id": 1, "profile_id": 1 },
+  { "name": "Admins", "team_id": 2, "profile_id": 2 },
+  { "name": "Sales", "team_id": 1, "profile_id": 3 },
+  { "name": "Marketing", "team_id": 1, "profile_id": 3 },
+  { "name": "Operations", "team_id": 2, "profile_id": 4 },
+  { "name": "Purchasing", "team_id": 3, "profile_id": 6 },
+  { "name": "Engineering", "team_id": 3, "profile_id": 6 },
+  { "name": "Quality Assurance", "team_id": 2, "profile_id": 2 }
+]
