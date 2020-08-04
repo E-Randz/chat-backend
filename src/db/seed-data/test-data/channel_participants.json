@@ -1,0 +1,15 @@
+[
+  { "channel_id": 1, "profile_id": 1 },
+  { "channel_id": 2, "profile_id": 1 },
+  { "channel_id": 3, "profile_id": 2 },
+  { "channel_id": 4, "profile_id": 3 },
+  { "channel_id": 5, "profile_id": 3 },
+  { "channel_id": 6, "profile_id": 4 },
+  { "channel_id": 7, "profile_id": 6 },
+  { "channel_id": 8, "profile_id": 6 },
+  { "channel_id": 9, "profile_id": 2 },
+  { "channel_id": 10, "profile_id": 2 },
+  { "channel_id": 1, "profile_id": 3 },
+  { "channel_id": 2, "profile_id": 3 },
+  { "channel_id": 3, "profile_id": 5 }
+]
