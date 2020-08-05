@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import sendEndpoints from './controllers/api';
-import authRouter from './routes/auth';
+import { ErrorWithStatus } from './interfaces/errors';
+import routes from './api';
 
 const app = express();
 
@@ -12,14 +12,12 @@ if (process.env.NODE_ENV === 'dev') {
   app.use(morgan('dev'));
 }
 
+// accessed in the config files
+const apiPrefix = process.env.PREFIX || '/';
+
 app.use(cors());
 app.use(express.json());
-app.get('/', sendEndpoints);
-app.use('/auth', authRouter);
-
-interface ErrorWithStatus extends Error {
-  status?: number;
-}
+app.use(apiPrefix, routes());
 
 // error handling
 app.use((req, res, next) => {

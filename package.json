@@ -6,7 +6,7 @@
   "scripts": {
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint . --ext .ts",
-    "test": "NODE_ENV=test mocha -r ts-node/register 'src/spec/**/*.spec.ts'",
+    "test": "NODE_ENV=test mocha -r ts-node/register 'src/tests/**/*.test.ts'",
     "build": "rimraf ./build && tsc",
     "start:dev": "cross-env NODE_ENV=dev nodemon",
     "start:test": "cross-env NODE_ENV=test nodemon",
@@ -58,7 +58,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validation": "^3.0.5",
+    "express-validator": "^6.6.1",
     "knex": "^0.21.2",
-    "pg": "^8.3.0"
+    "pg": "^8.3.0",
+    "typedi": "^0.8.0"
   }
 }

@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { StringMap } from '../../common/types';
+import { StringMap } from '../../interfaces/generic';
 
 export const generator = (schema: StringMap, min = 1, max?: number): any[] => {
   max = max || min;
