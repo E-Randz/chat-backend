@@ -25,7 +25,7 @@ export default [
   check('password')
     .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
     .withMessage(
-      'Password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:',
+      'Password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
     ),
   (req: Request, res: Response, next: NextFunction): Response | void => {
     const errors = validationResult(req);
