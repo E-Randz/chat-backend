@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import { ErrorWithStatus } from './interfaces/errors';
+import { ErrorWithStatus } from './interfaces/IErrors';
 import routes from './api';
 
 const app = express();

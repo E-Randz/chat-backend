@@ -1,7 +1,7 @@
 import faker from 'faker';
-import { StringMap } from '../../interfaces/generic';
+import { IStringMap } from '../../interfaces/IGeneric';
 
-export const generator = (schema: StringMap, min = 1, max?: number): any[] => {
+export const generator = (schema: IStringMap, min = 1, max?: number): any[] => {
   max = max || min;
   return Array.from({ length: faker.random.number({ min, max }) }).map(() =>
     Object.keys(schema).reduce((entity: any, key: any) => {

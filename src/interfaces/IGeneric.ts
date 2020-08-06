@@ -1,6 +1,6 @@
 /**
  * Objects with string indexing and values
  */
-export interface StringMap {
+export interface IStringMap {
   [key: string]: string;
 }
