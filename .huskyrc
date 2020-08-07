@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "git-branch-is --not master && npm run prettier-format && npm run lint && tsc --noEmit",
+    "pre-commit": "git-branch-is --not master && npm run pretty-quick && npm run lint && tsc --noEmit",
     "pre-merge": "npm run prettier-format && npm run lint && tsc --noEmit && npm test",
     "post-merge": "npm test"
   }
