@@ -11,10 +11,10 @@ describe('AUTH', () => {
   after(() => db.destroy());
 
   describe('/auth/register', () => {
-    it('POST status 201 upon user registration and returns user', () => {
+    it('POST status 201 upon user registration', () => {
       const user = {
-        firstName: 'Timmy',
-        lastName: 'Timmison',
+        first_name: 'Timmy',
+        last_name: 'Timmison',
         email: 'timmy@timmy.com',
         password: 'heiudgwlgcFUF565657@@',
       };
@@ -22,10 +22,32 @@ describe('AUTH', () => {
       return request.post('/auth/register').send(user).expect(201);
     });
 
+    it('Returns created user upon successful registration', () => {
+      const user = {
+        first_name: 'Timmy',
+        last_name: 'Timmison',
+        email: 'timmy@timmy.com',
+        password: 'heiudgwlgcFUF565657@@',
+      };
+
+      return request
+        .post('/auth/register')
+        .send(user)
+        .expect(201)
+        .then(({ body }) => {
+          expect(body.user).to.have.keys([
+            'email',
+            'id',
+            'first_name',
+            'last_name',
+          ]);
+        });
+    });
+
     it('POST status 400 if user does not enter all required fields', () => {
       const user = {
-        firstName: 'Timmy',
-        lastName: 'Timmison',
+        first_name: 'Timmy',
+        last_name: 'Timmison',
         email: 'timmy@timmy.com',
       };
 
@@ -44,8 +66,8 @@ describe('AUTH', () => {
 
     it('POST status 400 if user enters an invalid password', () => {
       const user = {
-        firstName: 'Timmy',
-        lastName: 'Timmison',
+        first_name: 'Timmy',
+        last_name: 'Timmison',
         email: 'timmy@timmy.com',
         password: 'password123',
       };
