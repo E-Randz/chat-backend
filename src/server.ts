@@ -1,14 +1,7 @@
 import app from './app';
-import dotenv from 'dotenv';
-import path from 'path';
+import config from './config';
 
-dotenv.config({
-  path: path.resolve(__dirname, `../config/${process.env.NODE_ENV}.env`),
-});
-
-const { PORT } = process.env;
-
-app.listen(PORT, () => {
+app.listen(config.PORT, () => {
   // eslint-disable-next-line
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${config.PORT}`);
 });

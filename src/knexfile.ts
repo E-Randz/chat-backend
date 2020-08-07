@@ -1,40 +1,35 @@
-import dotenv from 'dotenv';
-import path from 'path';
-
-dotenv.config({
-  path: path.resolve(__dirname, `../config/${process.env.NODE_ENV}.env`),
-});
+import config from './config';
 
 const dbConfig: { [index: string]: any } = {
   development: {
     client: 'pg',
     migrations: {
-      directory: './db/migrations',
+      directory: __dirname + '/db/migrations',
     },
     seeds: {
-      directory: './db/seeds',
+      directory: __dirname + '/db/seeds',
     },
-    connection: process.env.DB_URL,
+    connection: config.DB_URL,
   },
   test: {
     client: 'pg',
     migrations: {
-      directory: './db/migrations',
+      directory: __dirname + '/db/migrations',
     },
     seeds: {
-      directory: './db/seeds',
+      directory: __dirname + '/db/seeds',
     },
-    connection: process.env.DB_URL,
+    connection: config.DB_URL,
   },
   production: {
     client: 'pg',
     migrations: {
-      directory: './db/migrations',
+      directory: __dirname + '/db/seeds',
     },
     seeds: {
-      directory: './db/seeds',
+      directory: __dirname + '/db/seeds',
     },
-    connection: `${process.env.DB_URL}?ssl=true`,
+    connection: `${config.DB_URL}?ssl=true`,
   },
 };
 

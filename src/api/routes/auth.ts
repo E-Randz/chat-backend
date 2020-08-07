@@ -18,7 +18,7 @@ export default (app: Router): void => {
 
       const { user } = await authServiceInstance.Register(userData);
 
-      return res.json({ user });
+      return res.status(201).json({ user });
     },
   );
 };
