@@ -1,16 +1,18 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import session from 'express-session';
 
 import { ErrorWithStatus } from './interfaces/IErrors';
 import routes from './api';
 import config from './config';
+import { SESSION_OPTIONS } from './loaders';
 
 // INITIALISE EXPRESS
 const app = express();
 
 // SETUP SESSIONS WITH REDIS AS CACHE
-// app.use(session(SESSION_OPTIONS));
+app.use(session(SESSION_OPTIONS));
 
 // only enable morgan logging in development
 if (config.ENV === 'dev') {

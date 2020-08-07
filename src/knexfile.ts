@@ -1,7 +1,7 @@
 import config from './config';
 
 const dbConfig: { [index: string]: any } = {
-  development: {
+  dev: {
     client: 'pg',
     migrations: {
       directory: __dirname + '/db/migrations',
@@ -21,7 +21,7 @@ const dbConfig: { [index: string]: any } = {
     },
     connection: config.DB_URL,
   },
-  production: {
+  prod: {
     client: 'pg',
     migrations: {
       directory: __dirname + '/db/seeds',
