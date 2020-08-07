@@ -2,13 +2,13 @@ import { Response, Request, NextFunction } from 'express';
 import { check, validationResult } from 'express-validator';
 
 export default [
-  check('firstName')
+  check('first_name')
     .trim()
     .escape()
     .not()
     .isEmpty()
     .withMessage('First Name can not be empty'),
-  check('lastName')
+  check('last_name')
     .trim()
     .escape()
     .not()
