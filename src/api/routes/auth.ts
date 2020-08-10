@@ -36,22 +36,8 @@ export default (app: Router): void => {
 
     const { user, err } = await authServiceInstance.Login(userData);
 
-    if (err) {
-    }
-
     req.session!.userID = user!.id;
 
     return res.status(200).json({ message: 'OK' });
-    // const authServiceInstance = Container.get(AuthService);
-
-    // const { user, err } = await authServiceInstance.Register(userData);
-
-    // if (err) {
-    //   return err.code === '23505'
-    //     ? res.status(409).json({ errors: err.errors })
-    //     : res.status(500);
-    // }
-
-    // return res.status(201).json({ user });
   });
 };
