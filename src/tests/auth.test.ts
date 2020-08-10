@@ -98,4 +98,55 @@ describe('AUTH', () => {
         });
     });
   });
+
+  describe('/auth/login', () => {
+    it('returns a status code of 400 if the password field is empty', () => {
+      const user = {
+        email: 'timmy@timmy.com',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .expect(400)
+        .then((res) => {
+          const text = JSON.parse(res.error.text);
+          expect(text.errors[0].param).equals('password');
+          expect(text.errors[0].msg).equals('Password cannot be empty');
+        });
+    });
+
+    it('returns a status code of 400 if the email field is empty', () => {
+      const user = {
+        password: 'aggdkyuaGSkxa576',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .expect(400)
+        .then((res) => {
+          const text = JSON.parse(res.error.text);
+          expect(text.errors[0].param).equals('email');
+          expect(text.errors[0].msg).equals('Email cannot be empty');
+        });
+    });
+
+    it('returns a status code of 400 if the email is not a valid email address', () => {
+      const user = {
+        email: 'hey',
+        password: 'aggdkyuaGSkxa576',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .expect(400)
+        .then((res) => {
+          const text = JSON.parse(res.error.text);
+          expect(text.errors[0].param).equals('email');
+          expect(text.errors[0].msg).equals('Invalid email address');
+        });
+    });
+  });
 });

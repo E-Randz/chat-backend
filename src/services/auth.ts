@@ -15,6 +15,20 @@ export default class AuthService implements IAuthService {
         .returning(['id', 'first_name', 'last_name', 'email']);
       return { user };
     } catch (err) {
+      if (err.code === '23505') {
+        return {
+          err: {
+            code: err.code,
+            errors: [
+              {
+                msg: err.detail,
+                param: 'email',
+                location: 'body',
+              },
+            ],
+          },
+        };
+      }
       return { err };
     }
   }

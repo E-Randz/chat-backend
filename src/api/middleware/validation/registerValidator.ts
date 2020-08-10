@@ -20,8 +20,9 @@ export default [
     .not()
     .isEmpty()
     .withMessage('Email can not be empty')
+    .bail()
     .isEmail()
-    .withMessage('Invalid email address!'),
+    .withMessage('Invalid email address'),
   check('password')
     .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
     .withMessage(
