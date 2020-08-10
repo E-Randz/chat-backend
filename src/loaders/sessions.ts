@@ -6,7 +6,7 @@ import config from '../config';
 // REDIS SETUP
 
 const REDIS_OPTIONS: RedisOptions = {
-  port: parseInt(config.REDIS_PORT, 10),
+  port: config.REDIS_PORT,
   host: config.REDIS_HOST,
   password: config.REDIS_PASSWORD,
 };
@@ -21,7 +21,7 @@ const SESSION_OPTIONS: SessionOptions = {
   name: config.SESSION_NAME,
   store: new RedisStore({ client }),
   cookie: {
-    maxAge: parseInt(config.SESSION_IDLE_TIMEOUT, 10),
+    maxAge: config.SESSION_IDLE_TIMEOUT,
     secure: config.ENV === 'prod',
     sameSite: true,
   },

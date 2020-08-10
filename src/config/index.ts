@@ -8,7 +8,7 @@ dotenv.config({
 const config = {
   // # APP
   HOST: process.env.HOST!,
-  PORT: process.env.PORT!,
+  PORT: parseInt(process.env.PORT!, 10),
   API_PREFIX: process.env.API_PREFIX! || '/',
   ENV: process.env.NODE_ENV!,
 
@@ -18,11 +18,11 @@ const config = {
   // # SESSIONS
   SESSION_SECRET: process.env.SESSION_SECRET!,
   SESSION_NAME: process.env.SESSION_NAME!,
-  SESSION_IDLE_TIMEOUT: process.env.SESSION_IDLE_TIMEOUT!,
+  SESSION_IDLE_TIMEOUT: parseInt(process.env.SESSION_IDLE_TIMEOUT!, 10),
 
   // # REDIS OPTIONS
   REDIS_HOST: process.env.REDIS_HOST!,
-  REDIS_PORT: process.env.REDIS_PORT!,
+  REDIS_PORT: parseInt(process.env.REDIS_PORT!, 10),
   REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
 };
 
