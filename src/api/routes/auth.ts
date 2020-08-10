@@ -32,6 +32,16 @@ export default (app: Router): void => {
   route.post('/login', loginValidator, async (req: Request, res: Response) => {
     const userData = req.body;
 
+    const authServiceInstance = Container.get(AuthService);
+
+    const { user, err } = await authServiceInstance.Login(userData);
+
+    if (err) {
+    }
+
+    req.session!.userID = user!.id;
+
+    return res.status(200).json({ message: 'OK' });
     // const authServiceInstance = Container.get(AuthService);
 
     // const { user, err } = await authServiceInstance.Register(userData);

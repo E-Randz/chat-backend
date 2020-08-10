@@ -100,6 +100,15 @@ describe('AUTH', () => {
   });
 
   describe('/auth/login', () => {
+    it('returns a status code of 200 upon successful login', () => {
+      const user = {
+        email: 'lsteers0@noaa.gov',
+        password: 'PwUQ6x',
+      };
+
+      return request.post('/auth/login').send(user).expect(200);
+    });
+
     it('returns a status code of 400 if the password field is empty', () => {
       const user = {
         email: 'timmy@timmy.com',

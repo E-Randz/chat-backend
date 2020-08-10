@@ -32,4 +32,26 @@ export default class AuthService implements IAuthService {
       return { err };
     }
   }
+
+  public async Login(
+    userData: IUserData,
+  ): Promise<{ user?: IUser; err?: any }> {
+    try {
+      const [user]: Array<IUser> = await db
+        .select('id', 'email', 'password')
+        .from('users')
+        .where({ email: userData.email });
+
+      if (user.password === userData.password) {
+        return { user: { id: user.id } };
+      } else {
+        throw {
+          name: 'Invalid Credentials',
+          message: 'Either the email or password is incorrect',
+        };
+      }
+    } catch (err) {
+      return { err };
+    }
+  }
 }
