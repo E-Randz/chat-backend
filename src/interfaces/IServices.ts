@@ -6,10 +6,6 @@ export interface IEndpointsService {
 }
 
 export interface IAuthService {
-  Register: (
-    userData: IUserData,
-  ) => Promise<{ user?: IUser; err?: Error | undefined }>;
-  Login: (
-    userData: IUserData,
-  ) => Promise<{ user?: IUser; err?: Error | undefined }>;
+  Register: (userData: IUserData) => Promise<IUser | undefined>;
+  Login: (userData: IUserData) => Promise<IUser | undefined>;
 }
