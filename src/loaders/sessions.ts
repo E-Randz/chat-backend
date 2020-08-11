@@ -1,11 +1,13 @@
-import Redis, { RedisOptions } from 'ioredis';
 import connectRedis from 'connect-redis';
 import session, { SessionOptions } from 'express-session';
 import config from '../config';
 
+// use redis mock for local testing
+const Redis = require(config.ENV === 'test' ? 'ioredis-mock' : 'ioredis');
+
 // REDIS SETUP
 
-const REDIS_OPTIONS: RedisOptions = {
+const REDIS_OPTIONS = {
   port: config.REDIS_PORT,
   host: config.REDIS_HOST,
   password: config.REDIS_PASSWORD,
