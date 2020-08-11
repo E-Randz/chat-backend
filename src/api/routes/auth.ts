@@ -1,11 +1,11 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response } from 'express';
 import { Container } from 'typedi';
+
 import AuthService from '../../services/auth';
 import registerValidator from '../middleware/validation/registerValidator';
 import loginValidator from '../middleware/validation/loginValidator';
 import { checkIfGuest } from '../middleware/auth';
 import { logIn } from '../utils/auth';
-import { nextTick } from 'process';
 import { catchAsync } from '../middleware/errors';
 
 const route = Router();
