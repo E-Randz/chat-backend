@@ -3,6 +3,9 @@ import { Container } from 'typedi';
 import AuthService from '../../services/auth';
 import registerValidator from '../middleware/validation/registerValidator';
 import loginValidator from '../middleware/validation/loginValidator';
+import { checkIfGuest } from '../middleware/auth';
+import { logIn } from '../utils/auth';
+import { nextTick } from 'process';
 
 const route = Router();
 
@@ -11,6 +14,7 @@ export default (app: Router): void => {
 
   route.post(
     '/register',
+    checkIfGuest,
     registerValidator,
     async (req: Request, res: Response) => {
       const userData = req.body;
@@ -29,15 +33,24 @@ export default (app: Router): void => {
     },
   );
 
-  route.post('/login', loginValidator, async (req: Request, res: Response) => {
-    const userData = req.body;
+  route.post(
+    '/login',
+    checkIfGuest,
+    loginValidator,
+    async (req: Request, res: Response) => {
+      const userData = req.body;
 
-    const authServiceInstance = Container.get(AuthService);
+      const authServiceInstance = Container.get(AuthService);
 
-    const { user, err } = await authServiceInstance.Login(userData);
+      const { user, err } = await authServiceInstance.Login(userData);
 
-    req.session!.userID = user!.id;
+      if (err) {
+        return res.status(401).json({ errors: err.errors() });
+      }
 
-    return res.status(200).json({ message: 'OK' });
-  });
+      logIn(req, user!.id);
+
+      return res.status(200).json({ message: 'OK' });
+    },
+  );
 };

@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 
 import { ErrorWithStatus } from './interfaces/IErrors';
-import routes from './api';
+import routes from './api/routes';
 import config from './config';
 import { SESSION_OPTIONS } from './loaders';
 
