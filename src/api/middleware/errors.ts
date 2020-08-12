@@ -22,9 +22,6 @@ export const internalServerError = (
   req: Request,
   res: Response,
 ): void => {
-  if (!err.status) {
-    console.log(err.stack);
-  }
   res
     .status(err.status || 500)
     .json({ message: err.message || 'Internal Server Error' });
