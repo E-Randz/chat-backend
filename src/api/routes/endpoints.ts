@@ -10,6 +10,6 @@ export default (app: Router): void => {
   route.get('/', (req, res) => {
     const endpointServiceInstance = Container.get(EndpointsService);
     const { endpoints } = endpointServiceInstance.Endpoints();
-    return res.status(200).send({ endpoints });
+    return res.status(200).json({ endpoints });
   });
 };

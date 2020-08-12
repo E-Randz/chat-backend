@@ -57,6 +57,49 @@ describe('AUTH', () => {
       return request.post('/auth/register').send(user).expect(409);
     });
 
+    it('returns a status code of 400 if user already logged in', () => {
+      const user = {
+        email: 'lsteers0@noaa.gov',
+        password: 'PwUQ6x',
+      };
+
+      const registerUser = {
+        email: 'test0@noaa.gov',
+        password: 'PwUQ6x25172165',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .then((res) => {
+          const cookie = res.header['set-cookie'];
+          return request
+            .post('/auth/register')
+            .send(registerUser)
+            .set('cookie', cookie)
+            .expect(400);
+        });
+    });
+
+    it('returns a status code of 400 if user already logged in', () => {
+      const user = {
+        email: 'lsteers0@noaa.gov',
+        password: 'PwUQ6x',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .then((res) => {
+          const cookie = res.header['set-cookie'];
+          return request
+            .post('/auth/login')
+            .send(user)
+            .set('cookie', cookie)
+            .expect(400);
+        });
+    });
+
     it('POST status 400 if user does not enter all required fields', () => {
       const user = {
         first_name: 'Timmy',
@@ -107,6 +150,25 @@ describe('AUTH', () => {
       };
 
       return request.post('/auth/login').send(user).expect(200);
+    });
+
+    it('returns a status code of 400 if user already logged in', () => {
+      const user = {
+        email: 'lsteers0@noaa.gov',
+        password: 'PwUQ6x',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .then((res) => {
+          const cookie = res.header['set-cookie'];
+          return request
+            .post('/auth/login')
+            .send(user)
+            .set('cookie', cookie)
+            .expect(400);
+        });
     });
 
     it('returns a status code of 400 if the password field is empty', () => {
