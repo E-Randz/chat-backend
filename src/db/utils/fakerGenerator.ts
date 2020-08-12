@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { IStringMap } from '../../interfaces/IGeneric';
+import { IStringMap } from '../../typescript/IGeneric';
 
 export const generator = (schema: IStringMap, min = 1, max?: number): any[] => {
   max = max || min;

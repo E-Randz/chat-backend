@@ -1,6 +1,6 @@
 import { Service } from 'typedi';
-import { IEndpointsService } from '../interfaces/IServices';
-import { IStringMap } from '../interfaces/IGeneric';
+import { IEndpointsService } from '../typescript/IServices';
+import { IStringMap } from '../typescript/IGeneric';
 
 @Service()
 export default class EndpointsService implements IEndpointsService {

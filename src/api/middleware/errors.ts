@@ -1,5 +1,5 @@
 import { RequestHandler, Request, Response, NextFunction } from 'express';
-import { ErrorWithStatus } from '../../interfaces/IErrors';
+import { ErrorWithStatus } from '../../typescript/IErrors';
 
 export const catchAsync = (handler: RequestHandler): RequestHandler => (
   req: Request,
