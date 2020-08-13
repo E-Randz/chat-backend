@@ -4,7 +4,7 @@ import { Container } from 'typedi';
 import AuthService from '../../services/auth';
 import registerValidator from '../middleware/validation/registerValidator';
 import loginValidator from '../middleware/validation/loginValidator';
-import { checkIfGuest, checkIfLoggedIn } from '../middleware/auth';
+import { guest, auth } from '../middleware/auth';
 import { logIn, logOut } from '../utils/auth';
 import { catchAsync } from '../middleware/errors';
 
@@ -15,7 +15,7 @@ export default (app: Router): void => {
 
   route.post(
     '/register',
-    checkIfGuest,
+    guest,
     registerValidator,
     catchAsync(async (req: Request, res: Response) => {
       const userData = req.body;
@@ -28,7 +28,7 @@ export default (app: Router): void => {
 
   route.post(
     '/login',
-    checkIfGuest,
+    guest,
     loginValidator,
     catchAsync(async (req: Request, res: Response) => {
       const userData = req.body;
@@ -43,7 +43,7 @@ export default (app: Router): void => {
 
   route.post(
     '/logout',
-    checkIfLoggedIn,
+    auth,
     catchAsync(async (req: Request, res: Response) => {
       await logOut(req, res);
       res.status(204).json({ message: 'OK' });
