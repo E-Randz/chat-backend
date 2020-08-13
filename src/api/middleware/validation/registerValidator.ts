@@ -24,9 +24,11 @@ export default [
     .isEmail()
     .withMessage('Invalid email address'),
   check('password')
-    .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
+    .matches(
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/u,
+    )
     .withMessage(
-      'Password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+      'Password must contain a minimum of 8 characters, a maximum of 30 characters, at least one uppercase letter, one lowercase letter, one number and one special character',
     ),
   (req: Request, res: Response, next: NextFunction): Response | void => {
     const errors = validationResult(req);
