@@ -115,7 +115,7 @@ describe('AUTH', () => {
           const text = JSON.parse(res.error.text);
           expect(text.errors[0].param).equals('password');
           expect(text.errors[0].msg).equals(
-            'Password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+            'Password must contain a minimum of 8 characters, a maximum of 30 characters, at least one uppercase letter, one lowercase letter, one number and one special character',
           );
         });
     });
@@ -136,7 +136,7 @@ describe('AUTH', () => {
           const text = JSON.parse(res.error.text);
           expect(text.errors[0].param).equals('password');
           expect(text.errors[0].msg).equals(
-            'Password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+            'Password must contain a minimum of 8 characters, a maximum of 30 characters, at least one uppercase letter, one lowercase letter, one number and one special character',
           );
         });
     });

@@ -3,7 +3,7 @@ import { Service } from 'typedi';
 import argon2 from 'argon2';
 
 import { IAuthService } from '../typescript/IServices';
-import { IUserData, IUser, IHashData } from '../typescript/IUsers';
+import { IUserData, IUser } from '../typescript/IUsers';
 import db from '../db';
 import { Unauthorized, Conflict } from '../errors';
 
@@ -11,12 +11,11 @@ import { Unauthorized, Conflict } from '../errors';
 export default class AuthService implements IAuthService {
   public async Register(userData: IUserData): Promise<IUser | undefined> {
     try {
-      const hashedData = await this.hashPassword(userData);
+      const hash = await this.HashPassword(userData);
 
       const userWithHash = {
         ...userData,
-        salt: hashedData!.salt,
-        password: hashedData!.hash,
+        password: hash,
       };
 
       const [user]: Array<IUser> = await db
@@ -45,15 +44,8 @@ export default class AuthService implements IAuthService {
     }
   }
 
-  private async hashPassword(
-    userData: IUserData,
-  ): Promise<IHashData | undefined> {
-    const salt = randomBytes(32);
-    try {
-      const hash = await argon2.hash(userData.password, { salt });
-      return { hash, salt };
-    } catch (err) {
-      console.log(err);
-    }
+  private async HashPassword(userData: IUserData): Promise<string> {
+    const hash = await argon2.hash(userData.password);
+    return hash;
   }
 }

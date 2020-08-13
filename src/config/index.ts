@@ -24,9 +24,6 @@ const config = {
   REDIS_HOST: process.env.REDIS_HOST!,
   REDIS_PORT: parseInt(process.env.REDIS_PORT!, 10),
   REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
-
-  // BCRYPT
-  SALT_RANDOM_BYTES: parseInt(process.env.SALT_RANDOM_BYTES!, 10),
 };
 
 export default config;

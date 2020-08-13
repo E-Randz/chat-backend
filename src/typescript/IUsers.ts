@@ -12,8 +12,3 @@ export interface IUserData {
   firstName?: string;
   lastName?: string;
 }
-
-export interface IHashData {
-  salt: Buffer;
-  hash: string;
-}
