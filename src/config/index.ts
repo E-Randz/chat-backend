@@ -11,15 +11,13 @@ const config = {
   PORT: parseInt(process.env.PORT!, 10),
   API_PREFIX: process.env.API_PREFIX! || '/',
   ENV: process.env.NODE_ENV!,
-
   // # DB
   DB_URL: process.env.DB_URL!,
-
   // # SESSIONS
   SESSION_SECRET: process.env.SESSION_SECRET!,
   SESSION_NAME: process.env.SESSION_NAME!,
   SESSION_IDLE_TIMEOUT: parseInt(process.env.SESSION_IDLE_TIMEOUT!, 10),
-
+  SESSION_ABSOLUTE_TIMEOUT: parseInt(process.env.SESSION_ABSOLUTE_TIMEOUT!, 10),
   // # REDIS OPTIONS
   REDIS_HOST: process.env.REDIS_HOST!,
   REDIS_PORT: parseInt(process.env.REDIS_PORT!, 10),
