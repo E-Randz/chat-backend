@@ -7,7 +7,7 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "pretty-quick": "pretty-quick --staged",
     "lint": "eslint . --ext .ts",
-    "test": "NODE_ENV=test mocha -r ts-node/register 'src/tests/**/*.test.ts' --exit",
+    "test": "NODE_ENV=test mocha -r ts-node/register 'src/tests/**/*.test.ts' --timeout 5000 --exit",
     "build": "rimraf ./build && tsc",
     "start:dev": "cross-env NODE_ENV=dev nodemon",
     "start:prod": "npm run build && cross-env NODE_ENV=prod node build/server.js",
