@@ -25,7 +25,7 @@ export default [
     .withMessage('Invalid email address'),
   check('password')
     .matches(
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/u,
+      /^(?=.*?[\p{Lu}])(?=.*?[\p{Ll}])(?=.*?\d)(?=.*?[#?!@$%^&*-]).{8,30}$/u,
     )
     .withMessage(
       'Password must contain a minimum of 8 characters, a maximum of 30 characters, at least one uppercase letter, one lowercase letter, one number and one special character',
