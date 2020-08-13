@@ -220,4 +220,25 @@ describe('AUTH', () => {
         });
     });
   });
+
+  describe('/auth/logout', () => {
+    it('returns a status code of 204 upon successful logout', () => {
+      const user = {
+        email: 'lsteers0@noaa.gov',
+        password: 'PwUQ6x',
+      };
+
+      return request
+        .post('/auth/login')
+        .send(user)
+        .then((res) => {
+          const cookie = res.header['set-cookie'];
+          return request.post('/auth/logout').set('cookie', cookie).expect(204);
+        });
+    });
+
+    it("returns a status code of 401 if user isn't logged in", () => {
+      return request.post('/auth/logout').expect(401);
+    });
+  });
 });

@@ -4,8 +4,8 @@ import { Container } from 'typedi';
 import AuthService from '../../services/auth';
 import registerValidator from '../middleware/validation/registerValidator';
 import loginValidator from '../middleware/validation/loginValidator';
-import { checkIfGuest } from '../middleware/auth';
-import { logIn } from '../utils/auth';
+import { checkIfGuest, checkIfLoggedIn } from '../middleware/auth';
+import { logIn, logOut } from '../utils/auth';
 import { catchAsync } from '../middleware/errors';
 
 const route = Router();
@@ -38,6 +38,15 @@ export default (app: Router): void => {
       logIn(req, user!.id);
 
       return res.status(200).json({ message: 'OK' });
+    }),
+  );
+
+  route.post(
+    '/logout',
+    checkIfLoggedIn,
+    catchAsync(async (req: Request, res: Response) => {
+      await logOut(req, res);
+      res.status(204).json({ message: 'OK' });
     }),
   );
 };

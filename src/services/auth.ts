@@ -43,6 +43,7 @@ export default class AuthService implements IAuthService {
       user.password!,
       userData.password!,
     );
+
     if (isUserVerified) {
       return { id: user.id };
     } else {
