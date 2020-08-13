@@ -8,7 +8,7 @@ export interface IUser {
 
 export interface IUserData {
   email: string;
-  password: string;
+  password: string | undefined;
   firstName?: string;
   lastName?: string;
 }
