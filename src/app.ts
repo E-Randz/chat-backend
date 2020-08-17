@@ -6,7 +6,12 @@ import session from 'express-session';
 import routes from './api/routes';
 import config from './config';
 import { SESSION_OPTIONS } from './loaders';
-import { internalServerError, notFoundError } from './api/middleware/errors';
+import {
+  internalServerError,
+  notFoundError,
+  catchAsync,
+} from './api/middleware/errors';
+import { active } from './api/middleware/auth';
 
 // INITIALISE EXPRESS
 const app = express();
@@ -24,6 +29,11 @@ const apiPrefix = config.API_PREFIX;
 
 app.use(cors());
 app.use(express.json());
+
+// clear session if past absolute timeout
+app.use(catchAsync(active));
+
+// routes
 app.use(apiPrefix, routes());
 
 // error handling

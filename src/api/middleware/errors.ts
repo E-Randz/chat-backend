@@ -6,6 +6,7 @@ export const catchAsync = (handler: RequestHandler): RequestHandler => (
   res: Response,
   next: NextFunction,
 ): RequestHandler => handler(req, res, next).catch(next);
+
 export const notFoundError = (
   req: Request,
   res: Response,
